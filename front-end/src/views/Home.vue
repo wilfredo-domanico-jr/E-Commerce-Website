@@ -1,14 +1,31 @@
 <template>
-  <div>
-    <h1 class="text-xl font-bold text-green-600">Home Page</h1>
-    <p>Welcome to the Vue SPA!</p>
-  </div>
+  <TopBanner />
+  <Header />
+  <CategoriesBar />
+  <MainBannerCarousel />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
+// COMMON
+import TopBanner from "../components/common/TopBanner.vue";
+import Header from "../components/common/Header.vue";
+
+// PAGE SPECIFIC
+
+import CategoriesBar from "../components/home/CategoriesBar.vue";
+import MainBannerCarousel from "../components/home/MainBannerCarousel.vue";
+
 export default defineComponent({
   name: "Home",
+  components: {
+    TopBanner,
+    Header,
+    CategoriesBar,
+    MainBannerCarousel,
+  },
 });
+
+
 </script>
