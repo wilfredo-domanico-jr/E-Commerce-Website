@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <nav>
-      <router-link to="/">Home</router-link>
+  <div class="min-h-screen bg-gray-100">
+    <nav class="bg-indigo-600 px-6 py-4 flex items-center">
+      <router-link
+        to="/"
+        class="text-white font-semibold text-lg hover:text-indigo-200 transition"
+      >
+        Home
+      </router-link>
     </nav>
 
-    <router-view />
-    <!-- this is where components render -->
+    <main class="p-6">
+      <router-view />
+    </main>
   </div>
 </template>
 
@@ -16,9 +22,3 @@ export default defineComponent({
   name: "App",
 });
 </script>
-
-<style>
-nav a {
-  margin-right: 1rem;
-}
-</style>

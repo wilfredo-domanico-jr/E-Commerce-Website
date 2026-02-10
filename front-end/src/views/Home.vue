@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home Page</h1>
+    <h1 class="text-xl font-bold text-green-600">Home Page</h1>
     <p>Welcome to the Vue SPA!</p>
   </div>
 </template>
