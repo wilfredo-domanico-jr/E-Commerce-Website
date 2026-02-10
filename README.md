@@ -6,9 +6,18 @@ This system is designed to handle real‑world e‑commerce needs such as produc
 
 ---
 
+## Screenshot
+
+<p align="center">
+  <img src="Project-Screenshot.png" alt="ShopHub Screenshot" width="700">
+</p>
+
+---
+
 ## 🚀 Tech Stack
 
 ### Backend (API)
+
 - **Laravel** — RESTful API backend
 - **PHP**
 - **MySQL** — relational database
@@ -16,6 +25,7 @@ This system is designed to handle real‑world e‑commerce needs such as produc
 - **Eloquent ORM** — database interaction
 
 ### Frontend (SPA)
+
 - **Vue.js 3**
 - **Vite** — build tool
 - **Pinia** — state management
@@ -46,6 +56,7 @@ Database (MySQL)
 ## 🔐 Authentication
 
 ShopHub uses **token‑based authentication**:
+
 - Laravel Sanctum / JWT for secure login
 - Protected API routes
 - Role‑based access (Admin / Customer)
@@ -55,6 +66,7 @@ ShopHub uses **token‑based authentication**:
 ## ✨ Core Features
 
 ### 👤 User Features
+
 - User registration & login
 - Browse products by category
 - Product search & filtering
@@ -63,6 +75,7 @@ ShopHub uses **token‑based authentication**:
 - Order history tracking
 
 ### 🛠 Admin Features
+
 - Product CRUD (Create, Read, Update, Delete)
 - Category management
 - Order management
@@ -74,6 +87,7 @@ ShopHub uses **token‑based authentication**:
 ## 📂 Project Structure
 
 ### Backend (Laravel)
+
 ```
 /app
 /routes/api.php
@@ -83,6 +97,7 @@ ShopHub uses **token‑based authentication**:
 ```
 
 ### Frontend (Vue)
+
 ```
 /src
   /components
@@ -158,5 +173,4 @@ This project is for educational and portfolio purposes.
 
 ---
 
-> 💡 *ShopHub demonstrates a production‑ready Laravel + Vue architecture commonly used in real‑world enterprise applications.*
-
+> 💡 _ShopHub demonstrates a production‑ready Laravel + Vue architecture commonly used in real‑world enterprise applications._
