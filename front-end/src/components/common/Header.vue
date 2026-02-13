@@ -21,11 +21,11 @@
             />
           </svg>
         </button>
-        <h1
+        <router-link
+          to="/"
           class="text-gradient-primary font-display text-2xl md:text-3xl font-bold"
+          >ShopHub</router-link
         >
-          ShopHub
-        </h1>
       </div>
 
       <!-- Desktop Search Bar -->

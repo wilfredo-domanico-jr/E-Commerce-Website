@@ -3,10 +3,16 @@ import type { RouteRecordRaw } from 'vue-router';
 
 // Layout
 import DefaultLayout from '../DefaultLayout.vue';
+import AuthenticationLayout from '../AuthenticationLayout.vue';
 
 // Pages
 import Home from '../views/Home.vue';
-import NotFound from '../views/NotFound.vue'; // your 404 page
+import NotFound from '../views/NotFound.vue';
+
+// Authentication
+
+import Login from '../views/Auth/Login.vue';
+import Signup from '../views/Auth/Signup.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,9 +25,27 @@ const routes: Array<RouteRecordRaw> = [
         component: Home,
       },
       {
-        path: '/:pathMatch(.*)*', 
+        path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: NotFound,
+      },
+    ],
+  },
+
+  // Authentication routes 
+  {
+    path: '/',
+    component: AuthenticationLayout,
+    children: [
+      {
+        path: 'login',
+        name: 'Login',
+        component: Login,
+      },
+       {
+        path: 'signup',
+        name: 'Signup',
+        component: Signup,
       },
     ],
   },

@@ -3,11 +3,12 @@
     <div class="container mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
-          <h4
+          <router-link
+            to="/"
             class="text-gradient-primary font-display text-2xl font-bold mb-4 bg-clip-text text-transparent"
+            >ShopHub</router-link
           >
-            ShopHub
-          </h4>
+
           <p class="text-gray-400 text-sm mb-4">
             Your one-stop shop for everything you need. Quality products at
             unbeatable prices.
