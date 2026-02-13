@@ -4,6 +4,7 @@
   <CategoriesBar />
   <MainBannerCarousel />
   <FlashSaleSection />
+  <ShopByCategorySection />
 </template>
 
 <script lang="ts">
@@ -18,6 +19,7 @@ import Header from "../components/common/Header.vue";
 import CategoriesBar from "../components/home/CategoriesBar.vue";
 import MainBannerCarousel from "../components/home/MainBannerCarousel.vue";
 import FlashSaleSection from "../components/home/FlashSaleSection.vue";
+import ShopByCategorySection from "../components/home/ShopByCategorySection.vue";
 
 export default defineComponent({
   name: "Home",
@@ -27,6 +29,7 @@ export default defineComponent({
     CategoriesBar,
     MainBannerCarousel,
     FlashSaleSection,
+    ShopByCategorySection,
   },
 });
 </script>
