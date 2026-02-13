@@ -14,7 +14,8 @@
           </p>
           <div class="flex gap-3">
             <a
-              href="#"
+              href="https://www.facebook.com/"
+              target="_blank"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -24,7 +25,8 @@
               </svg>
             </a>
             <a
-              href="#"
+              href="https://x.com/"
+              target="_blank"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -34,7 +36,8 @@
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/"
+              target="_blank"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

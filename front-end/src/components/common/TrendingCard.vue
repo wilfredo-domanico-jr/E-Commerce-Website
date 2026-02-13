@@ -1,6 +1,6 @@
 <template>
   <div
-    class="product-card bg-white rounded-xl overflow-hidden shadow-md cursor-pointer"
+    class="product-card group bg-white rounded-xl overflow-hidden shadow-md cursor-pointer"
   >
     <div class="relative overflow-hidden">
       <img
@@ -14,7 +14,7 @@
         -{{ trending.discount }}%
       </div>
       <button
-        onclick=""
+        @click="addToCart()"
         class="absolute top-2 right-2 bg-white p-2 rounded-full shadow-lg hover:bg-orange-500 hover:text-white transition opacity-0 group-hover:opacity-100"
       >
         <svg
@@ -55,6 +55,10 @@
 <script lang="ts" setup>
 import StarRating from "../common/StarRating.vue";
 
+import { useCartStore } from "../../stores/cart";
+
+const cartStore = useCartStore();
+
 interface TrendingCard {
   id: number;
   name: string;
@@ -69,4 +73,22 @@ interface TrendingCard {
 const props = defineProps<{
   trending: TrendingCard;
 }>();
+
+function addToCart() {
+  cartStore.addItem(props.trending);
+  showNotification("Added to cart!");
+}
+
+function showNotification(message: string) {
+  const notification = document.createElement("div");
+  notification.className =
+    "fixed top-24 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-slideDown transition-opacity duration-300";
+  notification.textContent = message;
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.style.opacity = "0"; // fade out
+    setTimeout(() => notification.remove(), 300);
+  }, 2000);
+}
 </script>
