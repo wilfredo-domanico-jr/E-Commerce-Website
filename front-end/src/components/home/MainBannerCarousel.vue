@@ -99,7 +99,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 
-// Define the structure of a slide
 interface Slide {
   title: string;
   subtitle: string;
@@ -115,7 +114,7 @@ const slides: Slide[] = [
     title: "Mega Sale Season",
     subtitle: "Up to 80% OFF on Electronics",
     buttonText: "Shop Now",
-    gradientClass: "gradient-primary", // Ensure these are defined in your CSS
+    gradientClass: "gradient-primary",
     textColor: "text-white",
     btnClass: "bg-white text-orange-500 hover:bg-gray-100",
   },
@@ -152,7 +151,7 @@ const prevBanner = () => {
 
 const setBanner = (index: number) => {
   currentBanner.value = index;
-  resetTimer(); // Optional: restart the 5s timer when user clicks an indicator
+  resetTimer();
 };
 
 // Lifecycle management
