@@ -1,22 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
+
+// Layout
+import DefaultLayout from '../DefaultLayout.vue';
+
+// Pages
 import Home from '../views/Home.vue';
+import NotFound from '../views/NotFound.vue'; // your 404 page
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: Home,
+      },
+      {
+        path: '/:pathMatch(.*)*', 
+        name: 'NotFound',
+        component: NotFound,
+      },
+    ],
   },
-  {
-    path: '/:pathMatch(.*)*', // catch-all 404
-    redirect: '/'
-  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 
 export default router;
