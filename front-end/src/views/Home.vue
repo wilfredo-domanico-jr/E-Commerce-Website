@@ -1,6 +1,4 @@
 <template>
-  <TopBanner />
-  <Header />
   <CategoriesBar />
   <MainBannerCarousel />
   <FlashSaleSection />
@@ -12,10 +10,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-// COMMON
-import TopBanner from "../components/common/TopBanner.vue";
-import Header from "../components/common/Header.vue";
-import Footer from "../components/common/Footer.vue";
 // PAGE SPECIFIC
 
 import CategoriesBar from "../components/home/CategoriesBar.vue";
@@ -27,14 +21,11 @@ import TrendingSection from "../components/home/TrendingSection.vue";
 export default defineComponent({
   name: "Home",
   components: {
-    TopBanner,
-    Header,
     CategoriesBar,
     MainBannerCarousel,
     FlashSaleSection,
     ShopByCategorySection,
     TrendingSection,
-    Footer,
   },
 });
 </script>

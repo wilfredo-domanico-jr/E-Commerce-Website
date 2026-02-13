@@ -130,7 +130,7 @@
           </button>
 
           <button
-            id="cartBtn"
+            @click="emit('open-cart')"
             class="relative hover:text-orange-500 transition"
           >
             <svg
@@ -188,5 +188,10 @@
 
 <script setup lang="ts">
 import { useCartStore } from "../../stores/cart";
+
 const cartStore = useCartStore();
+
+const emit = defineEmits<{
+  (e: "open-cart"): void;
+}>();
 </script>
