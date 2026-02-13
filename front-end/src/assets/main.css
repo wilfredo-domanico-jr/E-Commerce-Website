@@ -139,6 +139,16 @@ body {
   background: linear-gradient(135deg, #06ffa5 0%, #00d4ff 100%);
 }
 
+/* Gradient Text */
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  -webkit-background-clip: text; /* For Safari and Chrome */
+  -webkit-text-fill-color: transparent; /* Makes the text show the gradient */
+  background-clip: text; /* For other modern browsers */
+  color: transparent; /* fallback */
+}
+
 /* Category icon backgrounds */
 .category-icon {
   transition: all 0.3s ease;

@@ -23,8 +23,9 @@
               ></path>
             </svg>
           </button>
+
           <h1
-            class="font-display text-2xl md:text-3xl font-bold gradient-primary bg-clip-text text-transparent"
+            class="text-gradient-primary font-display text-2xl md:text-3xl font-bold"
           >
             ShopHub
           </h1>

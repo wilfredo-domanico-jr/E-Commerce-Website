@@ -4,7 +4,7 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
           <h4
-            class="font-display text-2xl font-bold mb-4 gradient-primary bg-clip-text text-transparent"
+            class="text-gradient-primary font-display text-2xl font-bold mb-4 bg-clip-text text-transparent"
           >
             ShopHub
           </h4>
@@ -118,8 +118,8 @@
         class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm"
       >
         <p>
-          &copy; 2024 ShopHub. All rights reserved. Made with ❤️ for shoppers
-          everywhere.
+          &copy; {{ new Date().getFullYear() }} ShopHub. All rights reserved.
+          Made with ❤️ for shoppers everywhere.
         </p>
       </div>
     </div>
