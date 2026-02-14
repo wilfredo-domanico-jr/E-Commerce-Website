@@ -10,7 +10,7 @@
         {{ errorMessage }}
       </div>
 
-      <form @submit.prevent="register" class="space-y-4">
+      <form @submit.prevent="handleSignup" class="space-y-4">
         <div>
           <label class="block mb-1 font-medium" for="name">Full Name</label>
           <input
@@ -58,7 +58,7 @@
       </form>
 
       <!-- Social Signup -->
-      <!-- <div class="mt-6 flex flex-col gap-3">
+      <div class="mt-6 flex flex-col gap-3">
         <button
           @click="handleGoogleSignup"
           class="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 rounded hover:bg-gray-100 transition"
@@ -74,7 +74,7 @@
           <img :src="FacebookSVG" alt="Facebook" class="w-5 h-5" />
           Sign up with Facebook
         </button>
-      </div> -->
+      </div>
 
       <p class="mt-4 text-center text-sm text-gray-600">
         Already have an account?
@@ -87,54 +87,63 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import api from "../../services/api";
 import { useRouter } from "vue-router";
-import type { AxiosError } from "axios";
 import { useAuthStore } from "../../stores/auth";
+import GoogleSVG from "../../../public/icons/google_icon.svg";
+import FacebookSVG from "../../../public/icons/facebook_icon.svg";
 
 const auth = useAuthStore();
 const router = useRouter();
 
-const name = ref<string>("");
-const email = ref<string>("");
-const password = ref<string>("");
-const errorMessage = ref<string>("");
-const loading = ref<boolean>(false);
+const name = ref("");
+const email = ref("");
+const password = ref("");
+const errorMessage = ref("");
+const loading = ref(false);
 
-// redirect if already logged in
-onMounted(() => {
-  if (auth.isLoggedIn) {
-    router.replace("/");
-  }
-});
-
-async function register(): Promise<void> {
-  errorMessage.value = "";
-  loading.value = true;
-
+async function register() {
   try {
-    const res = await api.post<{ token: string }>("/register", {
+    const res = await api.post("/register", {
       name: name.value,
       email: email.value,
       password: password.value,
     });
 
     localStorage.setItem("token", res.data.token);
-
-    auth.token = res.data.token;
-
-    // Login Automatically after register
-    await auth.login({ email: email.value, password: password.value });
-
-    router.push("/");
-  } catch (error) {
-    const err = error as AxiosError<{ message?: string }>;
-    errorMessage.value = err.response?.data?.message || "Registration failed";
-  } finally {
-    loading.value = false;
+    router.push("/dashboard");
+  } catch (err) {
+    error.value = err.response?.data?.message || "Registration failed";
   }
 }
+
+// async function handleSignup() {
+//   errorMessage.value = "";
+//   loading.value = true;
+
+//   try {
+//     // Demo signup
+//     await auth.login({ name: name.value, email: email.value });
+//     router.push("/");
+//   } catch (error: any) {
+//     errorMessage.value = error.message || "Signup failed. Try again.";
+//   } finally {
+//     loading.value = false;
+//   }
+// }
+
+// // Simulated Google signup
+// function handleGoogleSignup() {
+//   auth.login({ name: "Google User", email: "google@example.com" });
+//   router.push("/");
+// }
+
+// // Simulated Facebook signup
+// function handleFacebookSignup() {
+//   auth.login({ name: "Facebook User", email: "facebook@example.com" });
+//   router.push("/");
+// }
 </script>
 
 <style scoped>

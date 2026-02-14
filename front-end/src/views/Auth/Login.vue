@@ -45,7 +45,7 @@
       </form>
 
       <!-- Social Login -->
-      <div class="mt-6 flex flex-col gap-3">
+      <!-- <div class="mt-6 flex flex-col gap-3">
         <button
           @click="handleGoogleLogin"
           class="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 rounded hover:bg-gray-100 transition"
@@ -61,7 +61,7 @@
           <img :src="FacebookSVG" alt="Facebook" class="w-5 h-5" />
           Login with Facebook
         </button>
-      </div>
+      </div> -->
 
       <p class="mt-4 text-center text-sm text-gray-600">
         Don't have an account?
@@ -74,12 +74,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../../stores/auth";
+import type { AxiosError } from "axios";
 
-import GoogleSVG from "../../../public/icons/google_icon.svg";
-import FacebookSVG from "../../../public/icons/facebook_icon.svg";
+// import GoogleSVG from "../../../public/icons/google_icon.svg";
+// import FacebookSVG from "../../../public/icons/facebook_icon.svg";
 
 const auth = useAuthStore();
 const router = useRouter();
@@ -89,6 +90,13 @@ const password = ref("");
 const errorMessage = ref("");
 const loading = ref(false);
 
+// redirect if already logged in
+onMounted(() => {
+  if (auth.isLoggedIn) {
+    router.replace("/"); // redirect to home/dashboard
+  }
+});
+
 async function handleLogin() {
   errorMessage.value = "";
   loading.value = true;
@@ -97,23 +105,25 @@ async function handleLogin() {
     await auth.login({ email: email.value, password: password.value });
     router.push("/"); // Redirect to home after login
   } catch (error: any) {
-    errorMessage.value = error.message || "Login failed. Try again.";
+    const err = error as AxiosError<{ message?: string }>;
+    errorMessage.value =
+      err.response?.data?.message || "Login failed. Try again.";
   } finally {
     loading.value = false;
   }
 }
 
-// Simulated Google login
-function handleGoogleLogin() {
-  auth.login({ name: "Google User", email: "google@example.com" });
-  router.push("/");
-}
+// // Simulated Google login
+// function handleGoogleLogin() {
+//   auth.login({ name: "Google User", email: "google@example.com" });
+//   router.push("/");
+// }
 
-// Simulated Facebook login
-function handleFacebookLogin() {
-  auth.login({ name: "Facebook User", email: "facebook@example.com" });
-  router.push("/");
-}
+// // Simulated Facebook login
+// function handleFacebookLogin() {
+//   auth.login({ name: "Facebook User", email: "facebook@example.com" });
+//   router.push("/");
+// }
 </script>
 
 <style scoped>

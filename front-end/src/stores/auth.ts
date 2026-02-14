@@ -1,25 +1,61 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
+import api from "../services/api";
 
-export const useAuthStore = defineStore('auth', () => {
-  const user = ref<{ name: string; email: string } | null>(null);
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 
-  // Simulated login
-  async function login(credentials: { email: string; password: string; remember?: boolean }) {
-    // Here you would normally call an API
-    // For demo purposes, we just fake a user
-    if (credentials.email === "test@example.com" && credentials.password === "123456") {
-      user.value = { name: "John Doe", email: credentials.email };
-    } else {
-      throw new Error("Invalid email or password");
-    }
+export const useAuthStore = defineStore("auth", () => {
+  const user = ref<User | null>(null);
+  const token = ref<string | null>(localStorage.getItem("token"));
+
+  const isLoggedIn = computed(() => !!token.value);
+
+  async function login(credentials: {
+    email: string;
+    password: string;
+  }) {
+
+    
+
+    const res = await api.post<{ user: User; token: string }>("/login", {
+      email: credentials.email,
+      password: credentials.password,
+    });
+
+    user.value = res.data.user;
+    token.value = res.data.token;
+
+    localStorage.setItem("token", res.data.token);
   }
 
   function logout() {
     user.value = null;
+    token.value = null;
+    localStorage.removeItem("token");
   }
 
-  const isLoggedIn = () => !!user.value;
+  async function fetchUser() {
 
-  return { user, login, logout, isLoggedIn };
+  if (!token.value) return;
+
+  try {
+    const res = await api.get<User>("/me");
+    user.value = res.data;
+  } catch {
+    logout();
+  }
+}
+
+  return {
+    user,
+    token,
+    isLoggedIn,
+    login,
+    logout,
+    fetchUser,
+  };
 });
