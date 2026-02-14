@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-20 flex items-center justify-center bg-gray-50 px-4">
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
     <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
       <h1 class="text-2xl font-bold text-center mb-6 text-gradient-primary">
         Login to ShopHub
@@ -50,7 +50,7 @@
           @click="handleGoogleLogin"
           class="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 rounded hover:bg-gray-100 transition"
         >
-          <img src="" alt="Google" class="w-5 h-5" />
+          <img :src="GoogleSVG" alt="Google" class="w-5 h-5" />
           Login with Google
         </button>
 
@@ -58,7 +58,7 @@
           @click="handleFacebookLogin"
           class="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 rounded hover:bg-gray-100 transition"
         >
-          <img src="" alt="Facebook" class="w-5 h-5" />
+          <img :src="FacebookSVG" alt="Facebook" class="w-5 h-5" />
           Login with Facebook
         </button>
       </div>
@@ -77,6 +77,9 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../../stores/auth";
+
+import GoogleSVG from "../../../public/icons/google_icon.svg";
+import FacebookSVG from "../../../public/icons/facebook_icon.svg";
 
 const auth = useAuthStore();
 const router = useRouter();
