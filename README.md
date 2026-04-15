@@ -1,4 +1,4 @@
-# 🛒 ShopHub — E‑Commerce Platform
+# 🛒 ShopHub — E‑Commerce Platform (UNDER DEVELOPMENT)
 
 ShopHub is a modern **e‑commerce web application** built using a **Laravel REST API** and a **Vue.js Single Page Application (SPA)**. The project follows an industry‑standard architecture focused on scalability, clean separation of concerns, and long‑term maintainability.
 
