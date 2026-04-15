@@ -4,11 +4,11 @@
     <div>
       <h1 class="text-2xl font-bold">Dashboard</h1>
       <p class="text-gray-500 text-sm">
-        Welcome back! Here’s what’s happening in your store today.
+        Welcome back! Here’s your store performance.
       </p>
     </div>
 
-    <!-- Stats Cards -->
+    <!-- Stats -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="bg-white p-5 rounded-xl shadow">
         <p class="text-gray-500 text-sm">Total Sales</p>
@@ -31,6 +31,13 @@
       </div>
     </div>
 
+    <!-- SALES CHART -->
+    <div class="bg-white p-5 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-4">Sales Overview</h2>
+
+      <Line :data="chartData" :options="chartOptions" />
+    </div>
+
     <!-- Recent Orders -->
     <div class="bg-white rounded-xl shadow p-5">
       <h2 class="text-lg font-semibold mb-4">Recent Orders</h2>
@@ -49,50 +56,71 @@
           <tr class="border-b">
             <td class="py-2">#1001</td>
             <td>Juan Dela Cruz</td>
-            <td>
-              <span class="text-green-600 font-medium">Delivered</span>
-            </td>
+            <td class="text-green-600 font-medium">Delivered</td>
             <td>₱2,500</td>
           </tr>
 
           <tr class="border-b">
             <td class="py-2">#1002</td>
             <td>Maria Santos</td>
-            <td>
-              <span class="text-yellow-600 font-medium">Pending</span>
-            </td>
+            <td class="text-yellow-600 font-medium">Pending</td>
             <td>₱1,200</td>
-          </tr>
-
-          <tr>
-            <td class="py-2">#1003</td>
-            <td>John Doe</td>
-            <td>
-              <span class="text-blue-600 font-medium">Shipped</span>
-            </td>
-            <td>₱3,800</td>
           </tr>
         </tbody>
       </table>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <button class="bg-orange-500 text-white p-4 rounded-xl hover:opacity-90">
-        + Add Product
-      </button>
-
-      <button class="bg-white shadow p-4 rounded-xl hover:bg-gray-50">
-        View Orders
-      </button>
-
-      <button class="bg-white shadow p-4 rounded-xl hover:bg-gray-50">
-        Manage Users
-      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// later you can fetch API data here
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+import { Line } from "vue-chartjs";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
+
+// Chart Data
+const chartData = {
+  labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  datasets: [
+    {
+      label: "Sales (₱)",
+      data: [1200, 1900, 3000, 2500, 3200, 4000, 3800],
+      borderColor: "#f97316",
+      backgroundColor: "rgba(249,115,22,0.2)",
+      tension: 0.4,
+      fill: true,
+    },
+  ],
+};
+
+// Chart Options
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+};
 </script>
+
+<style scoped>
+/* control chart height */
+div :deep(canvas) {
+  height: 300px !important;
+}
+</style>

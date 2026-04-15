@@ -13,6 +13,10 @@ import Login from "../views/Auth/Login.vue";
 
 // Admin Pages
 import AdminDashboard from "../views/Admin/Dashboard.vue";
+import AdminProducts from "../views/Admin/Products.vue";
+import AdminOrders from "../views/Admin/Orders.vue";
+import AdminCategories from "../views/Admin/Categories.vue";
+import AdminUsers from "../views/Admin/Users.vue";
 
 // Misc
 import NotFound from "../views/NotFound.vue";
@@ -59,6 +63,27 @@ const routes = [
         path: "",
         name: "AdminDashboard",
         component: AdminDashboard,
+      },
+      
+      {
+        path: "products",
+        name: "AdminProducts",
+        component: AdminProducts,
+      },
+       {
+        path: "orders",
+        name: "AdminOrders",
+        component: AdminOrders,
+      },
+        {
+        path: "categories",
+        name: "AdminCategories",
+        component: AdminCategories,
+      },
+       {
+        path: "users",
+        name: "AdminUsers",
+        component: AdminUsers,
       },
     ],
   },
