@@ -13,11 +13,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import TopBanner from "./components/common/TopBanner.vue";
-import Header from "./components/common/Header.vue";
-import CartModal from "./components/common/CartModal.vue";
-import OrderTrackingModal from "./components/common/OrderTrackingModal.vue";
-import Footer from "./components/common/Footer.vue";
+import TopBanner from "../components/common/TopBanner.vue";
+import Header from "../components/common/Header.vue";
+import CartModal from "../components/common/CartModal.vue";
+import OrderTrackingModal from "../components/common/OrderTrackingModal.vue";
+import Footer from "../components/common/Footer.vue";
 
 const showCartModal = ref(false);
 const showOrderTrackingModal = ref(false);

@@ -1,53 +1,75 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import type { RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 
-// Layout
-import DefaultLayout from '../DefaultLayout.vue';
-import AuthenticationLayout from '../AuthenticationLayout.vue';
+// Layouts
+import DefaultLayout from "../layouts/DefaultLayout.vue";
+import AuthenticationLayout from "../layouts/AuthenticationLayout.vue";
+import AdminLayout from "../layouts/AdminLayout.vue";
 
-// Pages
-import Home from '../views/Home.vue';
-import NotFound from '../views/NotFound.vue';
+// Public Pages
+import Home from "../views/Home.vue";
 
-// Authentication
+// Auth
+import Login from "../views/Auth/Login.vue";
 
-import Login from '../views/Auth/Login.vue';
-import Signup from '../views/Auth/Signup.vue';
+// Admin Pages
+import AdminDashboard from "../views/Admin/Dashboard.vue";
 
-const routes: Array<RouteRecordRaw> = [
+// Misc
+import NotFound from "../views/NotFound.vue";
+
+const routes = [
+  // =========================
+  // PUBLIC WEBSITE
+  // =========================
   {
-    path: '/',
+    path: "/",
     component: DefaultLayout,
     children: [
       {
-        path: '',
-        name: 'Home',
+        path: "",
+        name: "Home",
         component: Home,
-      },
-      {
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: NotFound,
       },
     ],
   },
 
-  // Authentication routes 
+  // =========================
+  // AUTH (LOGIN / REGISTER)
+  // =========================
   {
-    path: '/',
+    path: "/admin/login",
     component: AuthenticationLayout,
     children: [
       {
-        path: 'login',
-        name: 'Login',
+        path: "",
+        name: "Login",
         component: Login,
       },
-       {
-        path: 'signup',
-        name: 'Signup',
-        component: Signup,
+    ],
+  },
+
+  // =========================
+  // ADMIN DASHBOARD
+  // =========================
+  {
+    path: "/admin",
+    component: AdminLayout,
+    children: [
+      {
+        path: "",
+        name: "AdminDashboard",
+        component: AdminDashboard,
       },
     ],
+  },
+
+  // =========================
+  // 404 PAGE (MUST BE LAST)
+  // =========================
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: NotFound,
   },
 ];
 

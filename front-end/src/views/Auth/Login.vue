@@ -62,13 +62,6 @@
           Login with Facebook
         </button>
       </div> -->
-
-      <p class="mt-4 text-center text-sm text-gray-600">
-        Don't have an account?
-        <router-link to="/signup" class="text-orange-500 hover:underline">
-          Sign Up
-        </router-link>
-      </p>
     </div>
   </div>
 </template>
