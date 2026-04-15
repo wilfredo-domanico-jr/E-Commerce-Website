@@ -1,7 +1,11 @@
 <template>
   <TopBanner />
-  <Header @open-cart="openCart" />
+  <Header @open-cart="openCart" @open-track-order="openOrderTracking" />
   <CartModal v-if="showCartModal" @close-cart="closeCart" />
+  <OrderTrackingModal
+    v-if="showOrderTrackingModal"
+    @close-order-tracking="closeOrderTracking"
+  />
   <router-view />
   <Footer />
 </template>
@@ -12,9 +16,11 @@ import { ref } from "vue";
 import TopBanner from "./components/common/TopBanner.vue";
 import Header from "./components/common/Header.vue";
 import CartModal from "./components/common/CartModal.vue";
+import OrderTrackingModal from "./components/common/OrderTrackingModal.vue";
 import Footer from "./components/common/Footer.vue";
 
 const showCartModal = ref(false);
+const showOrderTrackingModal = ref(false);
 
 function openCart() {
   showCartModal.value = true;
@@ -22,5 +28,13 @@ function openCart() {
 
 function closeCart() {
   showCartModal.value = false;
+}
+
+function openOrderTracking() {
+  showOrderTrackingModal.value = true;
+}
+
+function closeOrderTracking() {
+  showOrderTrackingModal.value = false;
 }
 </script>

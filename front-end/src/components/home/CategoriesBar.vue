@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="bg-white border-b border-gray-200 sticky top-[72px] md:top-[88px] z-40"
-  >
+  <div class="bg-white border-b border-gray-200 top-[72px] md:top-[88px] z-40">
     <div class="container mx-auto px-4">
       <div class="flex gap-6 overflow-x-auto py-4 scrollbar-hide">
         <a
