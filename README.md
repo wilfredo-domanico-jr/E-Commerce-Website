@@ -253,4 +253,4 @@ Two GitHub Actions workflows ([`.github/workflows`](.github/workflows)) run on e
 
 ## License
 
-This project is for educational and portfolio purposes.
+All rights reserved. Shared for demonstration/portfolio purposes only — no permission is granted to copy, modify, or redistribute without the author's consent.
